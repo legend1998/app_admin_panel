@@ -5,11 +5,11 @@ function ProductTable({ products, loading }) {
     return <div>loading</div>;
   }
   return (
-    <div className="border bg-light p-2 rounded">
-      <table>
+    <div className=" bg-light rounded border-success border-top border-3 overflow-hidden">
+      <table className="table table-striped ">
         <tbody>
           {products.map((product) => (
-            <tr className="row">
+            <tr className="row pl-3 pr-2">
               <td className="text-primary col-sm-2 align-middle">
                 {product.id}
               </td>

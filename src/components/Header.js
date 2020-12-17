@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class=" navbar navbar-expand-sm navbar-dark bg-primary">
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link active" href="/">
