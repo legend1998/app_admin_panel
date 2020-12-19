@@ -1,8 +1,9 @@
 import React from "react";
+import Shimmer from "../utils/Shimmer";
 
 function Ordertable({ loading, orders }) {
   if (loading) {
-    return <div>loading</div>;
+    return <Shimmer />;
   }
   return (
     <div className="rounded border-success border-top border-3">

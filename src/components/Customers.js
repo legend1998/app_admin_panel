@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { useStateValue } from "../StateProvider";
 import UserTable from "../utils/UserTable";
+import DisplayStats from "../utils/DisplayStats";
 
 function Customers() {
   const [{ url, secret_key }] = useStateValue();
@@ -26,7 +27,8 @@ function Customers() {
 
   console.log(users);
   return (
-    <div className="container overflow-auto">
+    <div className="container-fluid overflow-auto">
+      <DisplayStats />
       <div className="container"></div>
       <UserTable users={users} loading={loading} />
     </div>

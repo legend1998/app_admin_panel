@@ -51,7 +51,7 @@ function DashboardStats({ sales, newmember, saleamount }) {
         </div>
         <div className="ml-3">
           <h2>{newmember}</h2>
-          <p>New member This month</p>
+          <p>New customer This month</p>
         </div>
       </div>
       <div className="col-sm d-flex -flex-row flex-nowrap ">
@@ -67,7 +67,7 @@ function DashboardStats({ sales, newmember, saleamount }) {
         </div>
         <div className="ml-3">
           <h2>{newmember}</h2>
-          <p>New member This month</p>
+          <p>New Seller This month</p>
         </div>
       </div>
     </div>

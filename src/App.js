@@ -7,12 +7,32 @@ import AddProduct from "./components/Add_new_product";
 import Customers from "./components/Customers";
 import Orders from "./components/Orders";
 
+import { useStateValue } from "./StateProvider";
+import LoginPage from "./components/LoginPage";
+
 function App() {
+  const [{ user }] = useStateValue();
+
+  // if (!user) {
+  //   return (
+  //     <Router>
+  //       <Switch>
+  //         <Route path="/">
+  //           <LoginPage />;
+  //         </Route>
+  //       </Switch>
+  //     </Router>
+  //   );
+  // }
+
   return (
     <Router>
       <div className="App">
         <Header />
         <Switch>
+          <Route path="/reset_passwordd">
+            <Orders />
+          </Route>
           <Route path="/orders">
             <Orders />
           </Route>

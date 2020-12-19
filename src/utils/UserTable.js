@@ -1,9 +1,12 @@
 import React from "react";
+import Shimmer from "../utils/Shimmer";
 
 function UserTable({ users, loading }) {
   if (loading) {
-    return <div>loading</div>;
+    return <Shimmer />;
   }
+
+  console.log(users);
   return (
     <div className="bg-light rounded border-success border-top border-3 overflow-hidden">
       <table className="table table-striped">
@@ -27,7 +30,14 @@ function UserTable({ users, loading }) {
               <td className="col align-middle"> {user.email} </td>
               <td className="col align-middle"> {user.phone} </td>
               <td className="col align-middle"> {Date(user.date_joined)}</td>
-              <td className="col align-middle"> {user.phone} </td>
+              <td className="col align-middle">
+                {user.address.map((add) => (
+                  <p>
+                    {add.house},{add.street},{add.Landmark},{add.pin_code},
+                    {add.district}
+                  </p>
+                ))}
+              </td>
             </tr>
           ))}
         </tbody>

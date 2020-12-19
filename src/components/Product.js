@@ -3,11 +3,14 @@ import Axios from "axios";
 import ProductTable from "../utils/ProductTable";
 import Pagination from "../utils/Pagination";
 import DisplayStas from "../utils/DisplayStats";
+import { useStateValue } from "../StateProvider";
 
 function Product() {
+  const [{ url, secret_key }] = useStateValue();
+
   const [products, setProducts] = useState([]);
-  const [loading, setloading] = useState(true);
-  const [currentPage, setcurrentPage] = useState(3);
+  const [loading, setLoading] = useState(true);
+  const [currentPage, setcurrentPage] = useState(1);
   const [productPerPage] = useState(10);
 
   const indexOfLastPage = currentPage * productPerPage;
@@ -15,14 +18,22 @@ function Product() {
   const currentProducts = products.slice(indexOfFirstPage, indexOfLastPage);
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      const res = await Axios.get("https://jsonplaceholder.typicode.com/posts");
-      setProducts(res.data);
-
-      setloading(false);
+    const fetchData = async () => {
+      setLoading(true);
+      const response = Axios.get(`${url}/product/getall`, {
+        headers: {
+          Authorization: secret_key,
+        },
+      });
+      const productsdata = await response;
+      setProducts(productsdata.data);
+      setLoading(false);
     };
-    fetchProduct();
+
+    fetchData();
   }, []);
+
+  console.log(products);
 
   const changePage = (page) => setcurrentPage(page);
 
@@ -31,6 +42,7 @@ function Product() {
       <DisplayStas totalproduct={products.length} />
       <div className="row container-fluid">
         <div className="col-md-8 d-flex flex-column align-items-center">
+          {/*  there will product table */}
           <ProductTable products={currentProducts} loading={loading} />
           <Pagination
             totalProduct={products.length}
