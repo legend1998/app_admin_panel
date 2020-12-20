@@ -9,6 +9,7 @@ import Orders from "./components/Orders";
 
 import { useStateValue } from "./StateProvider";
 import LoginPage from "./components/LoginPage";
+import ProductDetailPage from "./components/ProductDetailPage";
 
 function App() {
   const [{ user }] = useStateValue();
@@ -32,6 +33,9 @@ function App() {
         <Switch>
           <Route path="/reset_passwordd">
             <Orders />
+          </Route>
+          <Route path="/product_detail/:id">
+            <ProductDetailPage />
           </Route>
           <Route path="/orders">
             <Orders />

@@ -1,7 +1,14 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import Shimmer from "../utils/Shimmer";
 
 function ProductTable({ products, loading }) {
+  const History = useHistory();
+
+  const productdetail = (id) => {
+    History.push("/product_detail/" + id);
+  };
+
   if (loading) {
     return <Shimmer />;
   }
@@ -10,8 +17,8 @@ function ProductTable({ products, loading }) {
       <table className="table table-striped ">
         <thead>
           <tr className="row pl-3 pr-2">
-            <th className="col-sm-2">Category</th>
             <th className="col-sm-2">title</th>
+            <th className="col-sm-2">Category</th>
             <th className="col-sm-4">description</th>
             <th className="col-sm-2">color</th>
             <th className="col-sm-2">price</th>
@@ -19,11 +26,16 @@ function ProductTable({ products, loading }) {
         </thead>
         <tbody>
           {products.map((product) => (
-            <tr className="row pl-3 pr-2">
-              <td className="text-primary col-sm-2 align-middle">
-                {product.category}
+            <tr className="row pl-3 pr-2" key={product._id}>
+              <td className="col-sm-2 align-middle">
+                <button
+                  className="btn btn-0 text-primary"
+                  onClick={() => productdetail(product._id)}
+                >
+                  {product.title}
+                </button>
               </td>
-              <td className="col-sm-2 align-middle"> {product.title} </td>
+              <td className="col-sm-2 align-middle">{product.category}</td>
               <td className="col-sm-4 align-middle"> {product.description} </td>
               <td className="col-sm-2 align-middle"> {product.color} </td>
               <td className="col-sm-2 align-middle">

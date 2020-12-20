@@ -6,14 +6,16 @@ function Ordertable({ loading, orders }) {
     return <Shimmer />;
   }
   return (
-    <div className="rounded border-success border-top border-3">
-      <table className="table table-striped">
+    <div className="rounded border-success border-top border-3 overflow-hidden">
+      <table className="table table-striped table-bordered">
         <tbody>
           {orders.map((order) => (
             <tr className="row">
-              <td className="text-primary col-sm-2 align-middle">{order.id}</td>
+              <td className="text-primary col-sm-2 align-middle pl-5">
+                {order.id}
+              </td>
               <td className="col-sm-4 align-middle"> {order.title} </td>
-              <td className="col-sm-6 align-middle"> {order.body} </td>
+              <td className="col-sm-6 align-middle pr-2"> {order.body} </td>
             </tr>
           ))}
         </tbody>

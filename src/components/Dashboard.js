@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DashboardStats from "../utils/dashboardStats";
-import ProductTable from "../utils/ProductTable";
 import Axios from "axios";
+import Ordertable from "../utils/Ordertable";
 
 function Dashboard() {
   const [products, setProducts] = useState([]);
@@ -28,11 +28,11 @@ function Dashboard() {
       <div className="container-fluid row bg-light  border-top border-info rounded border-3">
         <div className="col-sm">
           <h4 className="text-muted mt-3">Recent Orders</h4>
-          <ProductTable products={currentProducts} loading={loading} />
+          <Ordertable orders={currentProducts} loading={loading} />
         </div>
         <div className="col-sm">
           <h4 className="text text-muted mt-3 ">Recent Products</h4>
-          <ProductTable products={currentProducts} loading={loading} />
+          <Ordertable orders={currentProducts} loading={loading} />
         </div>
       </div>
     </div>
