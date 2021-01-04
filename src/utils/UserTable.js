@@ -1,5 +1,6 @@
 import React from "react";
 import Shimmer from "../utils/Shimmer";
+import moment from "moment";
 
 function UserTable({ users, loading }) {
   if (loading) {
@@ -29,8 +30,12 @@ function UserTable({ users, loading }) {
               </td>
               <td className="col align-middle"> {user.email} </td>
               <td className="col align-middle"> {user.phone} </td>
-              <td className="col align-middle"> {Date(user.date_joined)}</td>
               <td className="col align-middle">
+                {moment(user.date_joined).format("YYYY-MM-DD")}
+              </td>
+              <td className="col align-middle">
+                {user.address.length === 0 ? "no address added yet" : ""}
+
                 {user.address.map((add) => (
                   <p>
                     {add.house},{add.street},{add.Landmark},{add.pin_code},

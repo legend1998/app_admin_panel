@@ -10,8 +10,8 @@ function DetailTable({ detail }) {
         </tr>
       </thead>
       <tbody>
-        {detail.map((row) => (
-          <tr className="">
+        {detail.map((row, index) => (
+          <tr key={index} className="">
             <th className="">{row.field}</th>
             <td className="">{row.value} </td>
           </tr>

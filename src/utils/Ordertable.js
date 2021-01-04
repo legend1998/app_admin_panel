@@ -9,8 +9,8 @@ function Ordertable({ loading, orders }) {
     <div className="rounded border-success border-top border-3 overflow-hidden">
       <table className="table table-striped table-bordered">
         <tbody>
-          {orders.map((order) => (
-            <tr className="row">
+          {orders.map((order, index) => (
+            <tr key={index} className="row">
               <td className="text-primary col-sm-2 align-middle pl-5">
                 {order.id}
               </td>

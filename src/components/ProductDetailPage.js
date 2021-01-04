@@ -5,6 +5,7 @@ import { useStateValue } from "../StateProvider";
 import ImageContainer from "../utils/ImageContainer";
 import Shimmer from "../utils/Shimmer";
 import DetailTable from "../utils/DetailTable";
+import moment from "moment";
 
 function ProductDetailPage() {
   const params = useParams();
@@ -39,6 +40,8 @@ function ProductDetailPage() {
           <small>title</small> <h2>{product.title}</h2>
         </div>
         <div className="col-sm">
+          <small>CreatedAt</small>{" "}
+          <p> {moment(product.createdAt).format("YYYY-MM-DD,hh-mm-ss")} </p>
           <small>description</small> <p>{product.description}</p>
         </div>
       </div>
@@ -103,7 +106,7 @@ function ProductDetailPage() {
         <div className="col-sm">
           <small>tags</small> <br />
           {product.tags.map((tag) => (
-            <button className="btn btn-outline-success m-1">{tag} </button>
+            <button className="btn btn-outline-success m-1">{tag}</button>
           ))}
         </div>
         <div className="col-sm">

@@ -1,6 +1,11 @@
 import "./App.css";
 import Header from "./components/Header";
-import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
+import {
+  Switch,
+  BrowserRouter as Router,
+  Route,
+  useHistory,
+} from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import Product from "./components/Product";
 import AddProduct from "./components/Add_new_product";
@@ -14,26 +19,15 @@ import ProductDetailPage from "./components/ProductDetailPage";
 function App() {
   const [{ user }] = useStateValue();
 
-  // if (!user) {
-  //   return (
-  //     <Router>
-  //       <Switch>
-  //         <Route path="/">
-  //           <LoginPage />;
-  //         </Route>
-  //       </Switch>
-  //     </Router>
-  //   );
-  // }
+  if (!user) {
+    return <LoginPage />;
+  }
 
   return (
     <Router>
       <div className="App">
         <Header />
         <Switch>
-          <Route path="/reset_passwordd">
-            <Orders />
-          </Route>
           <Route path="/product_detail/:id">
             <ProductDetailPage />
           </Route>
@@ -46,7 +40,7 @@ function App() {
           <Route path="/add_new_product">
             <AddProduct />
           </Route>
-          <Route path="/product">
+          <Route path="/products">
             <Product />
           </Route>
           <Route path="/">

@@ -1,22 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useStateValue } from "../StateProvider";
 
 export default function Header() {
+  const [{ user }] = useStateValue();
   return (
-    <nav class=" navbar navbar-expand-sm navbar-dark bg-primary">
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="/">
-            Dashboard <span class="sr-only">(current)</span>
-          </a>
-          <a class="nav-item nav-link active" href="/product">
+    <nav className=" navbar navbar-expand-sm navbar-dark bg-primary">
+      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div className="navbar-nav">
+          <Link to="/" className="nav-item nav-link active">
+            Dashboard
+          </Link>
+          <Link to="/products" className="nav-item nav-link active">
             Product
-          </a>
-          <a class="nav-item nav-link active" href="/Orders">
-            Order
-          </a>
-          <a class="nav-item nav-link active" href="/customers">
+          </Link>
+          <Link to="/orders" className="nav-item nav-link active">
+            Orders
+          </Link>
+          <Link to="/customers" className="nav-item nav-link active">
             Customers
-          </a>
+          </Link>
         </div>
       </div>
     </nav>

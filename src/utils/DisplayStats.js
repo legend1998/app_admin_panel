@@ -19,13 +19,13 @@ function DisplayStats({ totalproduct }) {
       <div className="col-sm">
         <div className="card-type bg-light p-3">
           <h2 className="card-title">{putm}</h2>
-          <p className="card-text">Product Uploaded this Month</p>
+          <p className="card-text">Total Sale</p>
         </div>
       </div>
       <div className="col-sm">
         <div className="card-type bg-light p-3">
           <h2 className="card-title">{putm}</h2>
-          <p className="card-text">Product Uploaded this Month</p>
+          <p className="card-text">Sale this month</p>
         </div>
       </div>
     </div>

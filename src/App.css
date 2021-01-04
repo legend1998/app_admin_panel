@@ -64,3 +64,13 @@
     background-position: 468px 0;
   }
 }
+
+.loading {
+  position: absolute;
+  z-index: -1;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.582);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

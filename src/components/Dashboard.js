@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import DashboardStats from "../utils/dashboardStats";
 import Axios from "axios";
 import Ordertable from "../utils/Ordertable";
+import { useStateValue } from "../StateProvider";
 
 function Dashboard() {
+  const [{ user }] = useStateValue();
   const [products, setProducts] = useState([]);
   const [loading, setloading] = useState(true);
   const [currentPage, setcurrentPage] = useState(3);

@@ -11,6 +11,7 @@
     "axios": "^0.21.0",
     "firebase": "^8.2.0",
     "materialize-css": "^1.0.0-rc.2",
+    "moment": "^2.29.1",
     "mongoose": "^5.11.8",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
