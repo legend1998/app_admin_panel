@@ -1,11 +1,6 @@
 import "./App.css";
 import Header from "./components/Header";
-import {
-  Switch,
-  BrowserRouter as Router,
-  Route,
-  useHistory,
-} from "react-router-dom";
+import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import Product from "./components/Product";
 import AddProduct from "./components/Add_new_product";

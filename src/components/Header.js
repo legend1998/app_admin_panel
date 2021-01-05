@@ -22,6 +22,7 @@ export default function Header() {
           </Link>
         </div>
       </div>
+      <div className="navbar-nav mr-auto text-light  ">{user.fname}@admin</div>
     </nav>
   );
 }

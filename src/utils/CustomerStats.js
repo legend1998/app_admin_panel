@@ -1,7 +1,6 @@
 import React from "react";
 
 function CustomerStats({ users }) {
-  const putm = Math.ceil(Math.random() * 100);
   return (
     <div className="container row mt-2 pt-2 mb-4 ">
       <div className="col-sm">

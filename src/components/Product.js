@@ -4,6 +4,7 @@ import ProductTable from "../utils/ProductTable";
 import Pagination from "../utils/Pagination";
 import DisplayStas from "../utils/DisplayStats";
 import { useStateValue } from "../StateProvider";
+import { Link } from "react-router-dom";
 
 function Product() {
   const [{ url, secret_key }] = useStateValue();
@@ -51,9 +52,7 @@ function Product() {
           />
         </div>
         <div className="col-md-4">
-          <a className="btn btn-outline-primary m-3" href="/add_new_product">
-            Add new Product
-          </a>
+          <Link to="/add_new_product">Add new product</Link>
         </div>
       </div>
     </div>

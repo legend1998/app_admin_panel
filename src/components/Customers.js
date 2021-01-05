@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { useStateValue } from "../StateProvider";
 import UserTable from "../utils/UserTable";
-import DisplayStats from "../utils/DisplayStats";
 import CustomerStats from "../utils/CustomerStats";
 
 function Customers() {

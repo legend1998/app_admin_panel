@@ -4,7 +4,7 @@ import logo from "../assets/logonew.png";
 import { useStateValue } from "../StateProvider";
 import { CircularProgress } from "@material-ui/core";
 function LoginPage() {
-  const [{ user, url, secret_key }, dispatch] = useStateValue();
+  const [{ url, secret_key }, dispatch] = useStateValue();
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
@@ -28,10 +28,16 @@ function LoginPage() {
     );
 
     if (response.status === 200) {
-      dispatch({
-        type: "SET_USER",
-        user: response.data,
-      });
+      var user = response.data;
+
+      if (user.role === "admin") {
+        dispatch({
+          type: "SET_USER",
+          user: response.data,
+        });
+      } else {
+        alert("authorization revoked! you are not admin");
+      }
     } else {
       loading.style.zIndex = -1;
       alert(response);
