@@ -76,9 +76,13 @@ function AddProduct() {
     };
 
     console.log(product);
-    Axios.post(`${url}/product/add`, product).then((res) => {
+    Axios.post(`${url}/product/add`, product, {
+      headers: {
+        Authorization: secret_key,
+      },
+    }).then((res) => {
       console.log(res);
-      window.location.reload();
+      alert("product added successfully");
     });
   };
 
