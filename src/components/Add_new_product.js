@@ -240,7 +240,7 @@ function AddProduct() {
                   className="form-control"
                   placeholder="seller of this product"
                   onChange={(e) => setseller(e.target.value)}
-                  value={model}
+                  value={seller}
                   required
                 />
                 <small className="text-muted">Seller</small>
