@@ -52,7 +52,9 @@ function Product() {
           />
         </div>
         <div className="col-md-4">
-          <Link to="/add_new_product">Add new product</Link>
+          <Link to="/add_new_product" className="btn btn-primary text-light">
+            Add new product
+          </Link>
         </div>
       </div>
     </div>

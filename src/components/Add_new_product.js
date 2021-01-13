@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { useStateValue } from "../StateProvider";
+import { useHistory } from "react-router-dom";
 
 import { storage } from "../firebase";
 import Axios from "axios";
@@ -8,7 +9,7 @@ import ProductCategory from "./ProductCategory";
 
 function AddProduct() {
   const [{ url, secret_key }] = useStateValue();
-
+  const history = useHistory();
   const [image, setimage] = useState(null);
   const [imageURLs, setimageURLs] = useState([]);
 
@@ -21,7 +22,7 @@ function AddProduct() {
   const [field, setfield] = useState("");
   const [value, setvalue] = useState("");
   const [id, setid] = useState("");
-  const [group, setgroup] = useState("");
+  const [group, setgroup] = useState("none");
   const [title, settitle] = useState("");
   const [category, setcategory] = useState("");
   const [desc, setdesc] = useState("");
@@ -55,8 +56,6 @@ function AddProduct() {
   const submitProduct = () => {
     if (!approve) return;
 
-    console.log("haslkf");
-
     const product = {
       pid: id,
       title: title,
@@ -81,8 +80,13 @@ function AddProduct() {
         Authorization: secret_key,
       },
     }).then((res) => {
-      console.log(res);
-      alert("product added successfully");
+      if (res.status === 200) {
+        console.log(res);
+        window.location.reload();
+        alert("product added successfully");
+      } else {
+        alert("some field is missing try to fill that");
+      }
     });
   };
 
@@ -91,7 +95,7 @@ function AddProduct() {
 
     var storageRef = storage.ref();
     storageRef
-      .child(`thumbnail/${thumbnail.name}`)
+      .child(`thumbnail/${thumbnail.name + Date.now()}`)
       .put(thumbnail)
       .then((snapshot) => {
         snapshot.ref
@@ -111,7 +115,7 @@ function AddProduct() {
 
     var storageRef = storage.ref();
     storageRef
-      .child(`thumbnail/${image.name}`)
+      .child(`images/${image.name + Date.now()}`)
       .put(image)
       .then((snapshot) => {
         snapshot.ref

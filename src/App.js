@@ -10,9 +10,18 @@ import Orders from "./components/Orders";
 import { useStateValue } from "./StateProvider";
 import LoginPage from "./components/LoginPage";
 import ProductDetailPage from "./components/ProductDetailPage";
+import { useEffect } from "react";
 
 function App() {
-  const [{ user }] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
+
+  useEffect(() => {
+    let u = localStorage.getItem("user");
+    dispatch({
+      type: "SET_USER",
+      user: u,
+    });
+  }, []);
 
   if (!user) {
     return <LoginPage />;

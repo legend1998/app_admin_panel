@@ -1,6 +1,6 @@
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
 import ImageContainer from "../utils/ImageContainer";
 import Shimmer from "../utils/Shimmer";
@@ -9,6 +9,7 @@ import moment from "moment";
 
 function ProductDetailPage() {
   const params = useParams();
+  const history = useHistory();
   const [{ url, secret_key }] = useStateValue();
   const [product, setProduct] = useState(null);
   const [Loading, setLoading] = useState(true);
@@ -28,6 +29,23 @@ function ProductDetailPage() {
       fetchData();
     }
   }, []);
+
+  const deleteProduct = async () => {
+    const response = await Axios.delete(
+      `${url}/product/deleteproduct/${params.id}`,
+      {
+        headers: {
+          Authorization: secret_key,
+        },
+      }
+    );
+    if (response.status === 200) {
+      alert("product deleted succesfully");
+      history.goBack();
+    } else {
+      alert("something went wrong cant delete this product");
+    }
+  };
 
   console.log(product);
 
@@ -112,6 +130,13 @@ function ProductDetailPage() {
         <div className="col-sm">
           <small>Product details</small> <br />
           <DetailTable detail={product.details} />
+        </div>
+      </div>
+      <div className="row p-3">
+        <div className="col-sm">
+          <button className="btn btn-danger text-light" onClick={deleteProduct}>
+            Remove this product
+          </button>
         </div>
       </div>
     </div>

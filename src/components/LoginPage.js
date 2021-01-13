@@ -35,6 +35,7 @@ function LoginPage() {
           type: "SET_USER",
           user: response.data,
         });
+        localStorage.setItem("user", response.data);
       } else {
         alert("authorization revoked! you are not admin");
       }

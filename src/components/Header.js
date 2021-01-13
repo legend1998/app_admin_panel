@@ -3,7 +3,16 @@ import { Link } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
 
 export default function Header() {
-  const [{ user }] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
+
+  const logout = () => {
+    dispatch({
+      type: "SET_USER",
+      user: null,
+    });
+    localStorage.clear();
+  };
+
   return (
     <nav className=" navbar navbar-expand-sm navbar-dark bg-primary">
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -22,7 +31,11 @@ export default function Header() {
           </Link>
         </div>
       </div>
-      <div className="navbar-nav mr-auto text-light  ">{user.fname}@admin</div>
+      <div className="navbar-nav mr-auto text-light  ">
+        <button className="btn text-light" onClick={logout}>
+          {user.fname}@admin
+        </button>
+      </div>
     </nav>
   );
 }

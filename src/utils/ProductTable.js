@@ -12,6 +12,14 @@ function ProductTable({ products, loading }) {
   if (loading) {
     return <Shimmer />;
   }
+
+  if (products.length === 0) {
+    return (
+      <div className="container-fluid">
+        <p>no data available</p>
+      </div>
+    );
+  }
   return (
     <div className=" bg-light rounded border-success border-top border-3 overflow-hidden">
       <table className="table table-striped ">
