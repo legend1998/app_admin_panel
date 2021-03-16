@@ -10,6 +10,7 @@ import ProductCategory from "./ProductCategory";
 function AddProduct() {
   const [{ url, secret_key }] = useStateValue();
   const history = useHistory();
+
   const [image, setimage] = useState(null);
   const [imageURLs, setimageURLs] = useState([]);
 
